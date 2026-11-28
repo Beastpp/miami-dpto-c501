@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Proyecto MIAMI — Recorrido Virtual Interactivo Multi-Dpto | DECAL Espacio Inmobiliario</title>
+  <meta name="description" content="Recorrido virtual fotorrealista interactivo y ubicación 3D en las 4 torres de Proyecto MIAMI (Dptos. C-501 Dúplex y B-204 / B-304 Vista Parque Privado), Surco — DECAL Espacio Inmobiliario." />
+  <meta property="og:type" content="website" /><meta property="og:title" content="Proyecto MIAMI — Recorrido Virtual 3D & 360° Multi-Dpto (68 Vistas · Torres A, B, C y D) | DECAL" /><meta property="og:description" content="Recorrido virtual privado autorizado · 68 vistas activas: Planta 1 Torre A Áreas Comunes 360° y Torres A, B, C y D completas al 100% · Surco · DECAL Properties S.A.C." /><meta property="og:image" content="https://beastpp.github.io/miami-dpto-c501/brochure-fachada.jpg" /><meta property="og:url" content="https://beastpp.github.io/miami-dpto-c501/" /><meta name="twitter:card" content="summary_large_image" /><meta name="robots" content="noindex, nofollow" /><link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.min.css?v=27" />
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script defer src="bundle.min.js?v=53"></script>
+</head>
+<body class="mode-plan sec-locked" data-unit-layout="duplex">
+  <div class="sec-access-gate" id="secAccessGate" hidden>
+    <div class="sec-gate-card">
+      <img src="logo-decal-white.png" alt="DECAL Espacio Inmobiliario" class="sec-gate-logo" draggable="false" />
+      <div class="sec-gate-meta-row">
+        <span class="sec-gate-kicker">ACCESO PRIVADO AUTORIZADO</span>
+        <span class="sec-gate-preventa">PREVENTA</span>
+      </div>
+      <h2>Proyecto MIAMI · Recorrido Virtual 3D</h2>
+      <p class="sec-gate-sub" id="secGateMessage">Presentación privada exclusiva · 68 vistas activas en las 4 Torres de Proyecto MIAMI (Torres A, B, C y D completas al 100% + Planta 1 Torre A 360°, Surco).</p>
+      <form class="sec-pin-form" id="secPinForm" autocomplete="off">
+        <input type="password" id="secPinInput" class="sec-pin-input" placeholder="CÓDIGO DE ACCESO" maxlength="20" required />
+        <button type="submit" class="sec-pin-submit">Ingresar al Recorrido Virtual</button>
+        <div class="sec-pin-error" id="secPinError" role="alert"></div>
+      </form>
+      <a class="sec-gate-wa" href="https://wa.me/51922342926?text=Hola%20Jos%C3%A9%20Luis%2C%20solicito%20acceso%20al%20Recorrido%20Virtual%20del%20Proyecto%20MIAMI%20(DECAL)." target="_blank" rel="noopener noreferrer">
+        Solicitar acceso por WhatsApp · +51 922 342 926
+      </a>
+      <div class="sec-gate-foot">© DECAL Properties S.A.C. · Prohibida su reproducción o copia sin autorización.</div>
+    </div>
+  </div>
+  <header class="topbar" id="topbar">
+    <div class="topbar-left">
+      <div class="brand-badge" id="brandBadge">
+        <span class="brand-monogram">
+          <img data-sec-src="logo-decal-mark.png" alt="DECAL Inmobiliaria" class="brand-logo-img" draggable="false" />
+        </span>
+        <div class="brand-text">
+          <span class="brand-title">DECAL · PROYECTO MIAMI <em class="brand-stage-pill">PREVENTA</em></span>
+          <span class="brand-sub" id="brandSub">Torre C · Dpto. C-501 · 138.59 m² · Surco · BBVA</span>
+        </div>
+      </div>
+      <div class="unit-switcher" id="unitSwitcher" role="tablist" aria-label="Seleccionar departamento de Proyecto MIAMI">
+        <button type="button" class="unit-pill is-active" data-unit="c-501" role="tab" aria-selected="true" title="Dpto. C-501 · Torre C Dúplex 138.59 m²"><i class="u-dot dot-c501"></i>C-501</button>
+        <button type="button" class="unit-pill" data-unit="c-101" role="tab" aria-selected="false" title="Dpto. C-101 · Torre C Piso 1 + Terraza 98.65 m²"><i class="u-dot dot-c101"></i>C-101</button>
+        <button type="button" class="unit-pill" data-unit="c-103" role="tab" aria-selected="false" title="Dpto. C-103 · Torre C Piso 1 + Gran Terraza Parque 150.16 m²"><i class="u-dot dot-c103"></i>C-103</button>
+        <button type="button" class="unit-pill" data-unit="c-105" role="tab" aria-selected="false" title="Dpto. C-105 · Torre C Piso 1 + Terraza 94.62 m²"><i class="u-dot dot-c105"></i>C-105</button>
+        <button type="button" class="unit-pill" data-unit="c-201" role="tab" aria-selected="false" title="Dpto. C-201 · Torre C Piso 2 · 69.49 m²"><i class="u-dot dot-c201"></i>C-201</button>
+        <button type="button" class="unit-pill" data-unit="c-301" role="tab" aria-selected="false" title="Dpto. C-301 · Torre C Piso 3 · 69.49 m²"><i class="u-dot dot-c301"></i>C-301</button>
+        <button type="button" class="unit-pill" data-unit="c-401" role="tab" aria-selected="false" title="Dpto. C-401 · Torre C Piso 4 · 69.49 m²"><i class="u-dot dot-c401"></i>C-401</button>
+        <button type="button" class="unit-pill" data-unit="c-202" role="tab" aria-selected="false" title="Dpto. C-202 · Torre C Piso 2 · 81.52 m²"><i class="u-dot dot-c202"></i>C-202</button>
+        <button type="button" class="unit-pill" data-unit="c-302" role="tab" aria-selected="false" title="Dpto. C-302 · Torre C Piso 3 · 81.52 m²"><i class="u-dot dot-c302"></i>C-302</button>
+        <button type="button" class="unit-pill" data-unit="c-402" role="tab" aria-selected="false" title="Dpto. C-402 · Torre C Piso 4 · 81.52 m²"><i class="u-dot dot-c402"></i>C-402</button>
+        <button type="button" class="unit-pill" data-unit="c-203" role="tab" aria-selected="false" title="Dpto. C-203 · Torre C Piso 2 Vista Parque 100% · 88.65 m²"><i class="u-dot dot-c203"></i>C-203</button>
+        <button type="button" class="unit-pill" data-unit="c-303" role="tab" aria-selected="false" title="Dpto. C-303 · Torre C Piso 3 Vista Parque 100% · 88.65 m²"><i class="u-dot dot-c303"></i>C-303</button>
+        <button type="button" class="unit-pill" data-unit="c-403" role="tab" aria-selected="false" title="Dpto. C-403 · Torre C Piso 4 Vista Parque 100% · 88.65 m²"><i class="u-dot dot-c403"></i>C-403</button>
+        <button type="button" class="unit-pill" data-unit="c-204" role="tab" aria-selected="false" title="Dpto. C-204 · Torre C Piso 2 · 53.12 m²"><i class="u-dot dot-c204"></i>C-204</button>
+        <button type="button" class="unit-pill" data-unit="c-304" role="tab" aria-selected="false" title="Dpto. C-304 · Torre C Piso 3 · 53.12 m²"><i class="u-dot dot-c304"></i>C-304</button>
+        <button type="button" class="unit-pill" data-unit="c-404" role="tab" aria-selected="false" title="Dpto. C-404 · Torre C Piso 4 · 53.12 m²"><i class="u-dot dot-c404"></i>C-404</button>
+        <button type="button" class="unit-pill" data-unit="c-205" role="tab" aria-selected="false" title="Dpto. C-205 · Torre C Piso 2 · 44.58 m²"><i class="u-dot dot-c205"></i>C-205</button>
+        <button type="button" class="unit-pill" data-unit="c-305" role="tab" aria-selected="false" title="Dpto. C-305 · Torre C Piso 3 · 44.58 m²"><i class="u-dot dot-c305"></i>C-305</button>
+        <button type="button" class="unit-pill" data-unit="c-405" role="tab" aria-selected="false" title="Dpto. C-405 · Torre C Piso 4 · 44.58 m²"><i class="u-dot dot-c405"></i>C-405</button>
+        <button type="button" class="unit-pill" data-unit="c-206" role="tab" aria-selected="false" title="Dpto. C-206 · Torre C Piso 2 · 42.81 m²"><i class="u-dot dot-c206"></i>C-206</button>
+        <button type="button" class="unit-pill" data-unit="c-306" role="tab" aria-selected="false" title="Dpto. C-306 · Torre C Piso 3 · 42.81 m²"><i class="u-dot dot-c306"></i>C-306</button>
+        <button type="button" class="unit-pill" data-unit="c-406" role="tab" aria-selected="false" title="Dpto. C-406 · Torre C Piso 4 · 42.81 m²"><i class="u-dot dot-c406"></i>C-406</button>
+        <button type="button" class="unit-pill" data-unit="c-502" role="tab" aria-selected="false" title="Dpto. C-502 · Torre C Dúplex 158.85 m²"><i class="u-dot dot-c502"></i>C-502</button>
+        <button type="button" class="unit-pill" data-unit="c-503" role="tab" aria-selected="false" title="Dpto. C-503 · Torre C Dúplex Vista Parque 100% · 197.28 m²"><i class="u-dot dot-c503"></i>C-503</button>
+        <button type="button" class="unit-pill" data-unit="c-504" role="tab" aria-selected="false" title="Dpto. C-504 · Torre C Dúplex 155.68 m²"><i class="u-dot dot-c504"></i>C-504</button>
+        <button type="button" class="unit-pill" data-unit="c-505" role="tab" aria-selected="false" title="Dpto. C-505 · Torre C Dúplex 131.61 m²"><i class="u-dot dot-c505"></i>C-505</button>
+        <span class="unit-sep" aria-hidden="true"></span>
+        <button type="button" class="unit-pill" data-unit="b-101" role="tab" aria-selected="false" title="Dpto. B-101 · Torre B Piso 1 + Terraza 92.12 m² · 1 Dorm."><i class="u-dot dot-b101"></i>B-101</button>
+        <button type="button" class="unit-pill" data-unit="b-102" role="tab" aria-selected="false" title="Dpto. B-102 · Torre B Piso 1 + Terraza 98.15 m² · 2 Dorm."><i class="u-dot dot-b102"></i>B-102</button>
+        <button type="button" class="unit-pill" data-unit="b-104" role="tab" aria-selected="false" title="Dpto. B-104 · Torre B Piso 1 + Gran Terraza 126.16 m² · Vista Parque"><i class="u-dot dot-b104"></i>B-104</button>
+        <button type="button" class="unit-pill" data-unit="b-201" role="tab" aria-selected="false" title="Dpto. B-201 · Torre B Piso 2 · 64.36 m² · 1 Dorm."><i class="u-dot dot-b201"></i>B-201</button>
+        <button type="button" class="unit-pill" data-unit="b-301" role="tab" aria-selected="false" title="Dpto. B-301 · Torre B Piso 3 · 64.36 m² · 1 Dorm."><i class="u-dot dot-b201"></i>B-301</button>
+        <button type="button" class="unit-pill" data-unit="b-401" role="tab" aria-selected="false" title="Dpto. B-401 · Torre B Piso 4 · 64.36 m² · 1 Dorm."><i class="u-dot dot-b201"></i>B-401</button>
+        <button type="button" class="unit-pill" data-unit="b-202" role="tab" aria-selected="false" title="Dpto. B-202 · Torre B Piso 2 · 69.50 m² · 2 Dorm."><i class="u-dot dot-b202"></i>B-202</button>
+        <button type="button" class="unit-pill" data-unit="b-302" role="tab" aria-selected="false" title="Dpto. B-302 · Torre B Piso 3 · 69.50 m² · 2 Dorm."><i class="u-dot dot-b202"></i>B-302</button>
+        <button type="button" class="unit-pill" data-unit="b-402" role="tab" aria-selected="false" title="Dpto. B-402 · Torre B Piso 4 · 69.50 m² · 2 Dorm."><i class="u-dot dot-b202"></i>B-402</button>
+        <button type="button" class="unit-pill" data-unit="b-203" role="tab" aria-selected="false" title="Dpto. B-203 · Torre B Piso 2 · 82.60 m² · 2 Dorm. · Vista Parque 100%"><i class="u-dot dot-b203"></i>B-203</button>
+        <button type="button" class="unit-pill" data-unit="b-303" role="tab" aria-selected="false" title="Dpto. B-303 · Torre B Piso 3 · 82.60 m² · 2 Dorm. · Vista Parque 100%"><i class="u-dot dot-b203"></i>B-303</button>
+        <button type="button" class="unit-pill" data-unit="b-204" role="tab" aria-selected="false" title="Dpto. B-204 · Torre B Piso 2 · 88.49 m² Vista Parque"><i class="u-dot dot-b204"></i>B-204</button>
+        <button type="button" class="unit-pill" data-unit="b-304" role="tab" aria-selected="false" title="Dpto. B-304 · Torre B Piso 3 · 88.49 m² Vista Parque"><i class="u-dot dot-b304"></i>B-304</button>
+        <button type="button" class="unit-pill" data-unit="b-205" role="tab" aria-selected="false" title="Dpto. B-205 · Torre B Piso 2 · 80.93 m² · 2 Dorm. · Vista Parque 100%"><i class="u-dot dot-b205"></i>B-205</button>
+        <button type="button" class="unit-pill" data-unit="b-305" role="tab" aria-selected="false" title="Dpto. B-305 · Torre B Piso 3 · 80.93 m² · 2 Dorm. · Vista Parque 100%"><i class="u-dot dot-b205"></i>B-305</button>
+        <button type="button" class="unit-pill" data-unit="b-405" role="tab" aria-selected="false" title="Dpto. B-405 · Torre B Piso 4 · 80.93 m² · 2 Dorm. · Vista Parque 100%"><i class="u-dot dot-b205"></i>B-405</button>
+        <button type="button" class="unit-pill" data-unit="b-501" role="tab" aria-selected="false" title="Dpto. B-501 · Torre B Dúplex 123.37 m² · 1 Dorm. + Estar · 2.5 Baños"><i class="u-dot dot-b501"></i>B-501</button>
+        <button type="button" class="unit-pill" data-unit="b-502" role="tab" aria-selected="false" title="Dpto. B-502 · Torre B Dúplex 126.58 m² · 1 Dorm. + Estudio/2D + Estar · 3 Baños"><i class="u-dot dot-b502"></i>B-502</button>
+        <button type="button" class="unit-pill" data-unit="b-503" role="tab" aria-selected="false" title="Dpto. B-503 · Torre B Dúplex 164.21 m² · 2 Dorm. + Estar · Vista Parque 100%"><i class="u-dot dot-b503"></i>B-503</button>
+        <button type="button" class="unit-pill" data-unit="b-505" role="tab" aria-selected="false" title="Dpto. B-505 · Torre B Dúplex 162.58 m² · 2 Dorm. + Estar · Vista Parque 100%"><i class="u-dot dot-b505"></i>B-505</button>
+        <span class="unit-sep" aria-hidden="true"></span>
+        <button type="button" class="unit-pill" data-unit="a-p1" role="tab" aria-selected="false" title="Planta 1 Torre A · Áreas Comunes 360° (Lobby, Gym, Pet Spa, SUM, Piscina Techada y Parrillas)"><i class="u-dot dot-ap1"></i>P1 Áreas 360°</button>
+        <button type="button" class="unit-pill" data-unit="a-201" role="tab" aria-selected="false" title="Dpto. A-201 · Torre A Piso 2 · 87.82 m² Vista Calle"><i class="u-dot dot-a201"></i>A-201</button>
+        <button type="button" class="unit-pill" data-unit="a-301" role="tab" aria-selected="false" title="Dpto. A-301 · Torre A Piso 3 · 87.82 m² Vista Calle"><i class="u-dot dot-a301"></i>A-301</button>
+        <button type="button" class="unit-pill" data-unit="a-401" role="tab" aria-selected="false" title="Dpto. A-401 · Torre A Piso 4 · 87.82 m² Vista Calle"><i class="u-dot dot-a401"></i>A-401</button>
+        <button type="button" class="unit-pill" data-unit="a-202" role="tab" aria-selected="false" title="Dpto. A-202 · Torre A Piso 2 · 57.80 m² · 1 Dorm. · Vista Parcial Parque"><i class="u-dot dot-a202"></i>A-202</button>
+        <button type="button" class="unit-pill" data-unit="a-203" role="tab" aria-selected="false" title="Dpto. A-203 · Torre A Piso 2 · 76.74 m² · 2 Dorm. · Vista Parque 100%"><i class="u-dot dot-a203"></i>A-203</button>
+        <button type="button" class="unit-pill" data-unit="a-204" role="tab" aria-selected="false" title="Dpto. A-204 · Torre A Piso 2 · 54.91 m² · 1 Dorm. · Vista Parcial Parque"><i class="u-dot dot-a204"></i>A-204</button>
+        <button type="button" class="unit-pill" data-unit="a-205" role="tab" aria-selected="false" title="Dpto. A-205 · Torre A Piso 2 · 91.81 m² · 3 Dorm. · 3 Balcones Calle"><i class="u-dot dot-a205"></i>A-205</button>
+        <button type="button" class="unit-pill" data-unit="a-305" role="tab" aria-selected="false" title="Dpto. A-305 · Torre A Piso 3 · 91.81 m² · 3 Dorm. · 3 Balcones Calle"><i class="u-dot dot-a305"></i>A-305</button>
+        <button type="button" class="unit-pill" data-unit="a-405" role="tab" aria-selected="false" title="Dpto. A-405 · Torre A Piso 4 · 91.81 m² · 3 Dorm. · 3 Balcones Calle"><i class="u-dot dot-a405"></i>A-405</button>
+        <button type="button" class="unit-pill" data-unit="a-501" role="tab" aria-selected="false" title="Dpto. A-501 · Torre A Dúplex 190.21 m² · 3 Dorm. + Estar · 3.5 Baños"><i class="u-dot dot-a501"></i>A-501</button>
+        <button type="button" class="unit-pill" data-unit="a-502" role="tab" aria-selected="false" title="Dpto. A-502 · Torre A Dúplex 104.62 m² · 1 Dorm. + Estar · 2.5 Baños"><i class="u-dot dot-a502"></i>A-502</button>
+        <button type="button" class="unit-pill" data-unit="a-503" role="tab" aria-selected="false" title="Dpto. A-503 · Torre A Dúplex 159.11 m² · 2 Dorm. + Estar · Vista Parque 100%"><i class="u-dot dot-a503"></i>A-503</button>
+        <button type="button" class="unit-pill" data-unit="a-504" role="tab" aria-selected="false" title="Dpto. A-504 · Torre A Dúplex 100.17 m² · 1 Dorm. + Estar · Parcial Parque"><i class="u-dot dot-a504"></i>A-504</button>
+        <span class="unit-sep" aria-hidden="true"></span>
+        <button type="button" class="unit-pill" data-unit="d-101" role="tab" aria-selected="false" title="Dpto. D-101 · Torre D Piso 1 + Gran Terraza 118.98 m² Vista Parque"><i class="u-dot dot-d101"></i>D-101</button>
+        <button type="button" class="unit-pill" data-unit="d-102" role="tab" aria-selected="false" title="Dpto. D-102 · Torre D Piso 1 + Gran Terraza 123.06 m² · Ascensor Directo"><i class="u-dot dot-d102"></i>D-102</button>
+        <button type="button" class="unit-pill" data-unit="d-201" role="tab" aria-selected="false" title="Dpto. D-201 · Torre D Piso 2 · 105.22 m² · Ascensor Directo"><i class="u-dot dot-d201"></i>D-201</button>
+        <button type="button" class="unit-pill" data-unit="d-301" role="tab" aria-selected="false" title="Dpto. D-301 · Torre D Piso 3 · 105.22 m² · Ascensor Directo"><i class="u-dot dot-d301"></i>D-301</button>
+        <button type="button" class="unit-pill" data-unit="d-401" role="tab" aria-selected="false" title="Dpto. D-401 · Torre D Piso 4 · 105.22 m² · Ascensor Directo"><i class="u-dot dot-d401"></i>D-401</button>
+        <button type="button" class="unit-pill" data-unit="d-302" role="tab" aria-selected="false" title="Dpto. D-302 · Torre D Piso 3 · 92.48 m² · Ascensor Directo"><i class="u-dot dot-d302"></i>D-302</button>
+        <button type="button" class="unit-pill" data-unit="d-402" role="tab" aria-selected="false" title="Dpto. D-402 · Torre D Piso 4 · 92.48 m² · Ascensor Directo"><i class="u-dot dot-d402"></i>D-402</button>
+        <button type="button" class="unit-pill" data-unit="d-502" role="tab" aria-selected="false" title="Dpto. D-502 · Torre D Dúplex Piso 5 + Azotea 179.97 m² · Ascensor Directo"><i class="u-dot dot-d502"></i>D-502</button>
+      </div>
+      <button type="button" class="btn-dir-toggle" id="btnMobileDirToggle" aria-expanded="false" aria-controls="unitDirectoryCard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+        </svg>
+        <span id="btnMobileDirLabel">Dptos. (68)</span>
+      </button>
+      <button type="button" class="btn-back-plan" id="btnBackToPlan" aria-label="Volver al Plano 3D">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5"></path>
+          <path d="M12 19l-7-7 7-7"></path>
+        </svg>
+        <span>Volver al Plano 3D</span>
+      </button>
+    </div>
+    <div class="room-header-pill" id="roomHeaderPill" aria-live="polite">
+      <span class="room-header-dot"></span>
+      <span class="room-header-level" id="roomHeaderLevel">Nivel 1</span>
+      <span class="room-header-name" id="roomHeaderName">Sala - Comedor</span>
+      <span class="room-header-divider">·</span>
+      <span class="room-header-dim" id="roomHeaderDim">2.95 × 4.90 m</span>
+      <span class="room-header-badge-360" id="badge360" hidden>360°</span>
+      <span class="room-header-counter" id="roomHeaderCounter">1 / 9</span>
+    </div>
+    <div class="towers-subnav" id="towersSubnav" role="tablist" aria-label="Vistas de ubicación en torres">
+      <button type="button" class="subnav-pill is-active" data-towers-tab="model3d" role="tab" aria-selected="true">Vista 3D Torres</button>
+      <button type="button" class="subnav-pill" data-towers-tab="plans" role="tab" aria-selected="false">Planos Maestros</button>
+      <button type="button" class="subnav-pill" data-towers-tab="amenities" role="tab" aria-selected="false">Áreas Comunes &amp; Entorno</button>
+    </div>
+    <div class="topbar-right">
+      <button type="button" class="glass-btn" id="btnToggleSpecs" aria-expanded="false" aria-controls="specsDrawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+          <path d="M9 3v18"></path>
+          <path d="M13 8h4"></path>
+          <path d="M13 12h4"></path>
+          <path d="M13 16h2"></path>
+        </svg>
+        <span class="btn-label">Ficha del Dpto.</span>
+      </button>
+      <button type="button" class="cta-btn" id="btnOpenQuoteTop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>Cotizar / Visita</span>
+      </button>
+    </div>
+  </header>
+  <main class="stage-root" id="stageRoot">
+    <section class="view-layer view-plan is-active" id="planView" aria-label="Plano Isométrico 3D Interactivo">
+      <div class="plan-viewport" id="planViewport">
+        <div class="plan-canvas" id="planCanvas">
+          <div class="plan-image-wrapper" id="planImageWrapper">
+            <img
+              data-sec-src="plano-3d.jpg?v=8"
+              alt="Plano Isométrico 3D del Departamento C-501 Dúplex — Proyecto MIAMI"
+              class="plan-image"
+              id="planImage"
+              draggable="false"
+            />
+            <div id="planLevelTags">
+              <div class="level-tag" style="left: 24%; top: 2.0%;">Nivel 1 · Social &amp; Privado</div>
+              <div class="level-tag" style="left: 75%; top: 2.0%;">Nivel 2 · Azotea &amp; Terraza</div>
+            </div>
+            <div class="hotspots-layer" id="hotspotsLayer" aria-label="Puntos interactivos de ambientes"></div>
+          </div>
+        </div>
+      </div>
+      <div class="plan-title-sheet" id="planTitleSheet" aria-label="Resumen técnico del Departamento">
+        <div class="sheet-heading">
+          <h1 class="sheet-unit" id="sheetUnit">TORRE C · DPTO. C-501</h1>
+          <div class="sheet-meta-lines" id="sheetMetaLines">
+            <span>TIPO DÚPLEX · 2 NIVELES</span>
+            <span>VISTA INTERNA</span>
+            <span>PISO 5 + AZOTEA</span>
+          </div>
+        </div>
+        <div class="sheet-divider" aria-hidden="true"></div>
+        <div class="sheet-area-block">
+          <div class="sheet-area-main">
+            <span class="sheet-m2-icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 9V5h4M19 5h4v4M23 19v4h-4M9 23H5v-4"/>
+                <text x="14" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="currentColor" stroke="none">m²</text>
+              </svg>
+            </span>
+            <div class="sheet-area-copy">
+              <span class="sheet-micro-label">ÁREA TOTAL</span>
+              <strong class="sheet-area-big" id="sheetAreaBig">138.59 m²</strong>
+            </div>
+          </div>
+          <div class="sheet-area-breakdown" id="sheetAreaBreakdown">
+            <div><span>M² TECHADA</span><strong>97.44 m²</strong></div>
+            <div><span>M² TERRAZA</span><strong>41.15 m²</strong></div>
+          </div>
+        </div>
+        <div class="sheet-counts-row">
+          <div class="sheet-count-item">
+            <svg viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 19v-7a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v7"/>
+              <path d="M5 10V6a1.5 1.5 0 0 1 1.5-1.5h15A1.5 1.5 0 0 1 23 6v4"/>
+              <path d="M8 10V8.2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V10M15 10V8.2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V10"/>
+              <path d="M2 16h24M4 19v2M24 19v2"/>
+            </svg>
+            <div class="sheet-count-copy">
+              <span>CANT.<br/>DORM.</span>
+              <strong id="sheetDormCount">2</strong>
+            </div>
+          </div>
+          <div class="sheet-count-item">
+            <svg viewBox="0 0 26 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 4h11v7H5z"/>
+              <path d="M8 14h12v2.5a4.5 4.5 0 0 1-4.5 4.5h-3A4.5 4.5 0 0 1 8 16.5V14z"/>
+              <path d="M14 14v-3M10.5 7.5h0"/>
+              <path d="M4 14h18"/>
+            </svg>
+            <div class="sheet-count-copy">
+              <span>CANT.<br/>BAÑOS</span>
+              <strong id="sheetBathCount">3</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hint-pill plan-hint" id="planHint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3" fill="currentColor"></circle>
+        </svg>
+        <span>Pasa el cursor sobre un punto blanco para ver el ambiente y haz clic para ingresar</span>
+      </div>
+      <div class="zoom-controls" id="planZoomControls" aria-label="Controles de zoom del plano 3D">
+        <button type="button" class="zoom-btn" id="planZoomIn" title="Acercar" aria-label="Acercar plano">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <button type="button" class="zoom-btn" id="planZoomOut" title="Alejar" aria-label="Alejar plano">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg>
+        </button>
+        <button type="button" class="zoom-btn" id="planZoomReset" title="Centrar plano" aria-label="Restablecer vista del plano">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+      </div>
+    </section>
+    <section class="view-layer view-room" id="roomView" aria-label="Visor Fotorrealista de Ambientes" aria-hidden="true">
+      <div class="pano-viewport" id="panoViewport">
+        <div class="pano-stage" id="panoStage">
+          <img src="" alt="" class="pano-image" id="panoImage" draggable="false" />
+        </div>
+      </div>
+      <div class="sphere-viewport" id="sphereViewport" hidden></div>
+      <div class="viewer-vignette" aria-hidden="true"></div>
+      <button type="button" class="nav-arrow nav-arrow-prev" id="btnPrevRoom" aria-label="Ambiente anterior">
+        <span class="nav-arrow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </span>
+        <span class="nav-arrow-tooltip">
+          <small>Anterior</small>
+          <strong id="prevRoomLabel">Lavandería</strong>
+        </span>
+      </button>
+      <button type="button" class="nav-arrow nav-arrow-next" id="btnNextRoom" aria-label="Siguiente ambiente">
+        <span class="nav-arrow-tooltip">
+          <small>Siguiente ambiente</small>
+          <strong id="nextRoomLabel">Cocina</strong>
+        </span>
+        <span class="nav-arrow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </span>
+      </button>
+      <div class="zoom-controls room-controls" aria-label="Controles de visualización del ambiente">
+        <button type="button" class="zoom-btn is-active" id="btnAutoPan" title="Pausar / reanudar movimiento panorámico" aria-label="Alternar movimiento panorámico automático">
+          <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        </button>
+        <button type="button" class="zoom-btn" id="roomZoomIn" title="Acercar foto" aria-label="Acercar fotografía">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <button type="button" class="zoom-btn" id="roomZoomOut" title="Alejar foto" aria-label="Alejar fotografía">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg>
+        </button>
+        <button type="button" class="zoom-btn" id="roomZoomReset" title="Restablecer encuadre" aria-label="Restablecer encuadre">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+      </div>
+      <div class="room-caption-pill" id="roomCaptionPill">
+        <span id="roomCaptionText">Arrastra para explorar el ambiente · Rueda o pellizco para acercar</span>
+      </div>
+    </section>
+    <section class="view-layer view-towers" id="towersView" aria-label="Ubicación del Departamento C-501 en las 4 Torres de Proyecto MIAMI" aria-hidden="true">
+      <div class="towers-panel is-active" id="towersPanelModel3d">
+        <div class="towers-3d-canvas" id="towers3dCanvas"></div>
+        <div class="towers-3d-labels" id="towers3dLabels" aria-label="Etiquetas de torres y búsqueda de departamentos"></div>
+        <div class="towers-filter-banner" id="towersFilterBanner" hidden>
+          <i class="dot-match-cyan"></i>
+          <span id="towersFilterBannerText">0 opciones resaltadas</span>
+          <button type="button" class="filter-banner-btn" id="btnBannerCompare">Comparar 2</button>
+          <button type="button" class="filter-banner-clear" id="btnBannerClear" aria-label="Limpiar búsqueda">✕</button>
+        </div>
+        <div class="towers-info-card" id="towersInfoCard">
+          <div class="towers-info-head">
+            <div class="towers-info-head-copy">
+              <div class="towers-info-kicker">PROYECTO MIAMI · 4 TORRES · CA. BATALLÓN CONCEPCIÓN 211</div>
+              <h3 id="towersCardTitle">Torre C · Dpto. C-501 (Dúplex)</h3>
+            </div>
+            <button type="button" class="towers-collapse-btn" id="btnToggleTowersCard" aria-expanded="true" title="Minimizar panel para visualizar mejor la maqueta 3D">
+              <span class="collapse-label">Minimizar</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div class="towers-info-body">
+            <p class="towers-unit-mini" id="towersCardDesc">Selecciona tu criterio de búsqueda para resaltar opciones en el 3D o compara 2 departamentos lado a lado.</p>
+            <div class="towers-quick-dock-slot" id="towersQuickDockSlot"></div>
+            <div class="towers-card-tabs" role="tablist" aria-label="Herramientas de Ubicación Torres">
+              <button type="button" class="towers-card-tab is-active" data-card-tab="search" role="tab" aria-selected="true">Buscador Dpto.</button>
+              <button type="button" class="towers-card-tab" data-card-tab="controls" role="tab" aria-selected="false">Vistas y Capas 3D</button>
+            </div>
+            <div class="towers-card-pane is-active" id="towersTabSearch">
+              <div class="finder-grid">
+                <label class="finder-field">
+                  <span>Dormitorios</span>
+                  <select id="fDorm">
+                    <option value="all">Todos</option>
+                    <option value="1">1 Dormitorio</option>
+                    <option value="2">2 Dormitorios</option>
+                    <option value="3">3 Dormitorios</option>
+                    <option value="duplex">Dúplex / Penthouse</option>
+                  </select>
+                </label>
+                <label class="finder-field">
+                  <span>Orientación / Vista</span>
+                  <select id="fView">
+                    <option value="all">Cualquiera</option>
+                    <option value="parque">Parque 100%</option>
+                    <option value="parcial">Parcial Parque</option>
+                    <option value="calle">Exterior Calle</option>
+                    <option value="interna">Vista Interna</option>
+                  </select>
+                </label>
+                <label class="finder-field">
+                  <span>Nivel / Formato</span>
+                  <select id="fLevel">
+                    <option value="all">Cualquiera</option>
+                    <option value="p1">Piso 1 + Terraza</option>
+                    <option value="flat">Pisos 2–4 Flat</option>
+                    <option value="duplex">Piso 5 + Azotea</option>
+                  </select>
+                </label>
+                <label class="finder-field">
+                  <span>Área Total</span>
+                  <select id="fArea">
+                    <option value="all">Cualquiera</option>
+                    <option value="s">Hasta 65 m²</option>
+                    <option value="m">65 – 95 m²</option>
+                    <option value="l">95 – 140 m²</option>
+                    <option value="xl">Más de 140 m²</option>
+                  </select>
+                </label>
+                <label class="finder-field finder-field-wide">
+                  <span>Atributo clave</span>
+                  <select id="fExtra">
+                    <option value="all">Sin filtro adicional</option>
+                    <option value="visita">Con Baño de Visita (2.5+ B)</option>
+                    <option value="ascensor">Ascensor Directo (Torre D)</option>
+                    <option value="wcl">Walk-in Clóset o Estudio</option>
+                  </select>
+                </label>
+              </div>
+              <div class="finder-actions">
+                <span class="finder-count" id="finderMatchCount">67 dptos. disponibles</span>
+                <div class="finder-action-btns">
+                  <button type="button" class="finder-btn-ghost" id="btnFinderReset">Limpiar</button>
+                  <button type="button" class="finder-btn-primary" id="btnOpenCompare">Comparar (2)</button>
+                </div>
+              </div>
+              <div class="finder-results" id="finderResultsList" aria-live="polite"></div>
+            </div>
+            <div class="towers-card-pane" id="towersTabControls" hidden>
+              <div class="towers-legend-row" id="towersLegendRow">
+                <span class="legend-chip"><i class="dot-lead-idle"></i> Disponible</span>
+                <span class="legend-chip"><i class="dot-match-cyan"></i> Coincide</span>
+                <span class="legend-chip"><i class="dot-silver-hover"></i> Hover</span>
+              </div>
+              <div class="towers-camera-bar" role="group" aria-label="Vistas de cámara y capas 3D">
+                <button type="button" class="cam-pill is-active" data-cam="overview">Vista 4 Torres</button>
+                <button type="button" class="cam-pill" data-cam="facade">Fachada Calle</button>
+                <button type="button" class="cam-pill" data-cam="park">Parque Privado</button>
+                <button type="button" class="cam-pill" data-cam="poolbbq">Piscina y Parrilla</button>
+                <button type="button" class="cam-pill" data-cam="ap1" data-cam-unit="a-p1">P1 Áreas 360°</button>
+              </div>
+              <div class="towers-layer-toggles">
+                <button type="button" class="cam-pill is-toggle-on" id="btnTogglePerimWall" aria-pressed="true" title="Ocultar o mostrar el Muro Perimetral de 3 niveles para inspeccionar detalles detrás del muro">Muro Perimetral: ON</button>
+                <button type="button" class="cam-pill is-toggle-on" id="btnTogglePoolBbq" aria-pressed="true" title="Mostrar u ocultar Piscina Techada y Zona de Parrillas">Piscina/Parrilla: ON</button>
+                <button type="button" class="cam-pill cam-pill-compare" id="btnOpenCompare2">Pantalla Dividida (2)</button>
+              </div>
+              <small class="towers-drag-tip">Arrastra: girar 360° · Clic der. / Shift+arrastrar / WASD: mover libre · Rueda: zoom al cursor · Doble clic: enfocar punto</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="towers-panel towers-scroll-panel" id="towersPanelPlans">
+        <div class="towers-container">
+          <div class="towers-section-head">
+            <span class="drawer-eyebrow">PLANOS MAESTROS OFICIALES · CA. BATALLÓN CONCEPCIÓN 211, SURCO</span>
+            <h2 id="masterPlansHeading">Ubicación Exacta en el Conjunto de 4 Torres</h2>
+            <p>Proyecto boutique de <strong>4 torres de 5 pisos</strong> (<strong>Torre A Kendall</strong>, <strong>Torre B Brickell</strong>, <strong>Torre C Keybiscayne</strong> y <strong>Torre D Wynwood</strong>) articuladas alrededor de un Parque Central Privado de más de 400 m².</p>
+          </div>
+          <div class="plans-grid-2">
+            <article class="plan-showcase-card">
+              <div class="plan-card-head">
+                <strong id="masterFootprintTitle">Huella Exacta — Dpto. C-501 (Torre C)</strong>
+                <span class="plan-tag-red">Destacado en rojo</span>
+              </div>
+              <div class="plan-card-media light-bg">
+                <img id="masterFootprintImg" data-sec-src="ubicacion-torre-c501.png" alt="Ubicación exacta en rojo del departamento seleccionado" />
+              </div>
+              <p class="plan-card-foot" id="masterFootprintFoot">Acceso peatonal por Ca. Batallón Concepción 211 (izq.) → Parque Central → Torre C (fondo derecho, máxima privacidad).</p>
+            </article>
+            <article class="plan-showcase-card">
+              <div class="plan-card-head">
+                <strong>Distribución Oficial de las 4 Torres</strong>
+                <span class="plan-tag-green">Kendall · Brickell · Keybiscayne · Wynwood</span>
+              </div>
+              <div class="plan-card-media light-bg">
+                <img data-sec-src="distribucion-torres.jpg" loading="lazy" decoding="async" alt="Distribución de Torres A, B, C y D de Proyecto MIAMI" />
+              </div>
+              <p class="plan-card-foot">Torre A alberga Lobby, Gimnasio, Co-Working, Pet Spa, SUM y Piscina Techada; las 4 torres rodean el Parque Privado.</p>
+            </article>
+          </div>
+          <article class="plan-showcase-card plan-showcase-wide" style="margin-bottom: 18px;">
+            <div class="plan-card-head">
+              <strong>Planta Maestra Piso 1 — Corte Oficial Torres A, B, C y D</strong>
+              <span class="plan-tag-gold">Incluye B-104 (34.37 m² terraza) y D-101 (29.77 m² terraza)</span>
+            </div>
+            <div class="plan-card-media light-bg">
+              <img data-sec-src="plano-corte-piso-1.jpg?v=2" loading="lazy" decoding="async" alt="Plano oficial de corte Piso 1 de las 4 Torres de Proyecto MIAMI" />
+            </div>
+            <p class="plan-card-foot">Corte oficial de Primer Piso actualizado mostrando el acceso peatonal, Lobby, Gimnasio, Coworking, Pet Spa, SUM, Piscina, Terraza Común y Zona de Parrillas, Rampa Vehicular SW, Parque Central Privado (+400 m²) y las grandes terrazas privadas.</p>
+          </article>
+          <article class="plan-showcase-card plan-showcase-wide" style="margin-bottom: 18px;">
+            <div class="plan-card-head">
+              <strong>Planta Maestra Pisos 2, 3 y 4 — Corte Oficial Torres A, B, C y D</strong>
+              <span class="plan-tag-gold">Incluye Dptos. B-204 y B-304 · Vista Parque 100%</span>
+            </div>
+            <div class="plan-card-media light-bg">
+              <img data-sec-src="plano-corte-piso-234.jpg" loading="lazy" decoding="async" alt="Plano oficial de corte Pisos 2, 3 y 4 de las 4 Torres de Proyecto MIAMI" />
+            </div>
+            <p class="plan-card-foot">Corte oficial de niveles típicos (Pisos 2, 3 y 4) mostrando la ubicación frontal de los Dptos. B-204 y B-304 en Torre B (Brickell) mirando directamente al Parque Privado (+400 m²).</p>
+          </article>
+          <article class="plan-showcase-card plan-showcase-wide" style="margin-bottom: 18px;">
+            <div class="plan-card-head">
+              <strong>Planta Maestra de Azotea — Terrazas y Jardines de las 4 Torres</strong>
+              <span class="plan-tag-green">Nivel Azotea · Dúplex 5.° Piso (Dpto. C-501)</span>
+            </div>
+            <div class="plan-card-media light-bg">
+              <img data-sec-src="plano-azotea-torres.jpg" loading="lazy" decoding="async" alt="Plano oficial de Azoteas y Terrazas de las 4 Torres de Proyecto MIAMI" />
+            </div>
+            <p class="plan-card-foot">Muestra exactamente las terrazas cerámicas 60×60, áreas verdes privadas y salas de estar de las 4 torres (Dpto. C-501 ubicado en el ala sureste de Torre C, parte inferior derecha).</p>
+          </article>
+          <article class="plan-showcase-card plan-showcase-wide" style="margin-bottom: 18px;">
+            <div class="plan-card-head">
+              <strong>Entorno Real de Frente de Calle — Ca. Batallón Concepción 211 (Sur → Norte)</strong>
+              <span class="plan-tag-green">Panorama Fotográfico Unificado Real · Azoteas Ladrillo Pastelero</span>
+            </div>
+            <div class="plan-card-media light-bg">
+              <img data-sec-src="calle-batallon-concepcion.jpg" loading="lazy" decoding="async" alt="Panorama real unificado frente a Torre A en Ca. Batallón Concepción 211, Surco" />
+            </div>
+            <p class="plan-card-foot">Vista panorámica real frente al proyecto (Sur izquierda frente a Rampa/A-205..405 → Centro Lobby → Norte derecha frente a Gimnasio/A-201..501).</p>
+          </article>
+          <article class="plan-showcase-card plan-showcase-wide">
+            <div class="plan-card-head">
+              <strong>Planta Maestra Piso 1 — Áreas Comunes y Circulaciones</strong>
+              <span class="plan-tag-gold">Terreno 2,511.41 m²</span>
+            </div>
+            <div class="plan-card-media light-bg">
+              <img data-sec-src="planta-maestra.jpg" loading="lazy" decoding="async" alt="Planta Maestra Piso 1 con todas las áreas comunes de Proyecto MIAMI" />
+            </div>
+            <div class="master-badges-row">
+              <span>1. Ingreso Peatonal &amp; Lobby (Torre A)</span>
+              <span>2. Gimnasio &amp; Baño de Mascotas (Pet Spa)</span>
+              <span>3. SUM + Piscina Techada + Zona Parrilla</span>
+              <span>4. Parque Central Privado (+400 m²)</span>
+              <span>5. Torre C — Hall Ascensores directo a Dpto. C-501</span>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="towers-panel towers-scroll-panel" id="towersPanelAmenities">
+        <div class="towers-container">
+          <div class="towers-section-head">
+            <span class="drawer-eyebrow">BROCHURE OFICIAL · ESPACIO MIAMI SURCO · DECAL INMOBILIARIA</span>
+            <h2>Arquitectura, Atractivas Áreas Comunes y Entorno en Surco</h2>
+            <p>Ubicado en <strong>Ca. Batallón Concepción 211, Surco (límite con Chacarilla)</strong> · 17 años construyendo hogares (+26 proyectos entregados) · Certificación sostenible <strong>EDGE</strong> · Financiado por <strong>BBVA</strong> · Miembros de <strong>CODIP</strong>.</p>
+          </div>
+          <div class="brochure-gallery-grid">
+            <figure class="brochure-card brochure-card-hero">
+              <img data-sec-src="vista-fachada-torre-a-dia.jpg" loading="lazy" decoding="async" alt="Fachada principal diurna de Torre A Kendall en Ca. Batallón Concepción 211, Surco" />
+              <figcaption>
+                <strong>Fachada Principal (Día) · Torre A Kendall · Ca. Batallón Concepción 211</strong>
+                <span>Piedra gris carbón, concreto travertino, celosías metálicas negras, madera nogal, Lobby peatonal y rampa vehicular.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="brochure-fachada.jpg" loading="lazy" decoding="async" alt="Fachada principal al atardecer de Proyecto MIAMI en Surco" />
+              <figcaption>
+                <strong>Fachada Principal (Atardecer)</strong>
+                <span>Arquitectura boutique de 4 torres de 5 pisos con iluminación cálida y certificación sostenible EDGE.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="vista-parque-torre-a.jpg?v=47" loading="lazy" decoding="async" alt="Vista desde el Parque Privado hacia Torre A Kendall" />
+              <figcaption>
+                <strong>Vista Parque Privado → Torre A (Kendall)</strong>
+                <span>Fachada interior en bandas negras mate, madera horizontal, ingreso en cristal templado y cerco vivo.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="vista-parque-torre-b.jpg?v=47" loading="lazy" decoding="async" alt="Vista desde el Parque Privado hacia Torre B Brickell" />
+              <figcaption>
+                <strong>Vista Parque Privado → Torre B (Brickell)</strong>
+                <span>Frente completo al Parque Privado (+400 m²), terrazas en Piso 1 con cerco vivo de 2.50 m y coronación verde.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="brochure-parque.jpg?v=47" loading="lazy" decoding="async" alt="Vista desde el Parque Central Privado hacia Torre C Keybiscayne y amplias áreas verdes" />
+              <figcaption>
+                <strong>Vista Parque Privado → Torre C &amp; Áreas Verdes</strong>
+                <span>Amplias áreas verdes, jardines interiores, palmeras y paseos en adoquines frente a Torre C (Keybiscayne).</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="vista-parque-torre-d.jpg?v=47" loading="lazy" decoding="async" alt="Vista desde el Parque Privado hacia Torre D Wynwood" />
+              <figcaption>
+                <strong>Vista Parque Privado → Torre D (Wynwood)</strong>
+                <span>100% vista directa al Parque Privado con palmeras, jardines y gran terraza privada en Piso 1 (D-101).</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="vista-parque-central-paseo.jpg?v=47" loading="lazy" decoding="async" alt="Paseo peatonal central en adoquines grises del Parque Privado" />
+              <figcaption>
+                <strong>Paseo Central · Parque Privado (+400 m²)</strong>
+                <span>Senderos peatonales en adoquines grises, bancas de madera, palmeras y jardines libres de ruido urbano.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="vista-sala-comedor-oficial.jpg" loading="lazy" decoding="async" alt="Interior oficial Sala-Comedor Proyecto MIAMI DECAL" />
+              <figcaption>
+                <strong>Sala-Comedor Oficial · Acabados DECAL</strong>
+                <span>Piso SPC roble natural con zócalo de 7 cm, muros blancos y mamparas amplias de piso a techo.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="brochure-sum-barra.jpg" loading="lazy" decoding="async" alt="SUM Sala de Usos Múltiples con barra y comedor en Proyecto MIAMI" />
+              <figcaption>
+                <strong>SUM — Salón Gourmet &amp; Barra</strong>
+                <span>Espacio social equipado con barra de mármol, comedor amplio y salida directa a la Terraza Común.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="brochure-sum-lounge.jpg" loading="lazy" decoding="async" alt="Zona lounge y recreación en SUM de Proyecto MIAMI" />
+              <figcaption>
+                <strong>SUM Lounge &amp; Zona Social</strong>
+                <span>Espacio de encuentro equipado en Torre A integrado a las atractivas áreas comunes del proyecto.</span>
+              </figcaption>
+            </figure>
+            <figure class="brochure-card">
+              <img data-sec-src="brochure-pet-spa.jpg" loading="lazy" decoding="async" alt="Pet Spa Baño de Mascotas en Proyecto MIAMI" />
+              <figcaption>
+                <strong>Pet Spa · Gimnasio · Bike Parking</strong>
+                <span>Baño de mascotas, gimnasio con vista al jardín frontal, Lobby de diseño, Piscina Techada y Zona de Parrilla.</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="trust-strip-grid">
+            <div class="trust-box">
+              <span class="trust-title">8 Áreas Comunes Oficiales</span>
+              <div class="amenities-chips">
+                <span>Parque Privado (+400 m²)</span>
+                <span>Piscina Techada</span>
+                <span>Zona de Parrilla</span>
+                <span>SUM</span>
+                <span>Gimnasio</span>
+                <span>Co-Working</span>
+                <span>Pet Spa</span>
+                <span>Lobby Peatonal</span>
+              </div>
+            </div>
+            <div class="trust-box">
+              <span class="trust-title">Entorno Privilegiado · Surco límite Chacarilla</span>
+              <p class="trust-text">A pocos minutos de <strong>Av. Caminos del Inca</strong>, <strong>Av. Alfredo Benavides</strong>, <strong>Av. Velasco Astete</strong>, <strong>Parque de la Amistad</strong>, <strong>Parque Mochica</strong>, <strong>Parque Chavín</strong>, <strong>Wong</strong>, <strong>Plaza Vea</strong> y la <strong>Universidad Ricardo Palma</strong>.</p>
+            </div>
+            <div class="trust-box">
+              <span class="trust-title">Respaldo, Certificación y Aliados</span>
+              <div class="amenities-chips">
+                <span>Certificación EDGE</span>
+                <span>Financiado BBVA</span>
+                <span>Miembros CODIP</span>
+                <span>VAINSA</span>
+                <span>KITCHEN CENTER · FDV</span>
+                <span>SMART HOUSE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="cinema-veil" id="cinemaVeil" aria-hidden="true"></div>
+  </main>
+  <div class="side-rail-stack" id="sideRailStack">
+    <aside class="unit-directory-card" id="unitDirectoryCard" aria-label="Directorio total de departamentos por Torre">
+      <div class="unit-dir-head">
+        <div class="unit-dir-title-wrap">
+          <span class="unit-dir-kicker">DIRECTORIO POR TORRE</span>
+          <strong class="unit-dir-title" id="unitDirTitle">4 Torres · 68 Vistas</strong>
+        </div>
+        <button type="button" class="minimap-collapse-btn unit-dir-collapse-btn" id="btnToggleUnitDir" title="Minimizar / expandir lista de departamentos" aria-expanded="true" aria-label="Minimizar o expandir lista de departamentos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="unit-dir-tabs" id="unitDirTabs" role="tablist" aria-label="Filtrar departamentos por Torre">
+        <button type="button" class="dir-tab-btn is-active" data-dir-tower="all" role="tab" aria-selected="true">Todas</button>
+        <button type="button" class="dir-tab-btn" data-dir-tower="A" role="tab" aria-selected="false">A (14)</button>
+        <button type="button" class="dir-tab-btn" data-dir-tower="B" role="tab" aria-selected="false">B (20)</button>
+        <button type="button" class="dir-tab-btn" data-dir-tower="C" role="tab" aria-selected="false">C (26)</button>
+        <button type="button" class="dir-tab-btn" data-dir-tower="D" role="tab" aria-selected="false">D (8)</button>
+      </div>
+      <div class="unit-dir-body" id="unitDirBody"></div>
+    </aside>
+    <aside class="minimap-card" id="minimapCard" aria-label="Minimapa Plano 2D Interactivo">
+      <div class="minimap-header">
+        <div class="minimap-title-group">
+          <span class="minimap-kicker">PLANO 2D</span>
+          <span class="minimap-unit" id="minimapUnit">C-501</span>
+        </div>
+        <div class="minimap-actions">
+          <button type="button" class="minimap-mode-btn" id="btnSwitch2DMode" title="Cambiar entre plano comercial y acotado">
+            Acotado
+          </button>
+          <button type="button" class="minimap-collapse-btn" id="btnToggleMinimap" title="Minimizar / expandir minimapa" aria-label="Minimizar o expandir minimapa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="minimap-body" id="minimapBody">
+        <div class="minimap-frame mode-commercial" id="minimapFrame">
+          <div class="minimap-map-inner" id="minimapInner">
+            <img
+              data-sec-src="plano-2d-comercial.png"
+              alt="Minimapa 2D del Departamento C-501"
+              class="minimap-img"
+              id="minimapImage"
+              draggable="false"
+            />
+            <div class="minimap-dots-layer" id="minimapDotsLayer"></div>
+          </div>
+        </div>
+        <div class="minimap-footer">
+          <span class="minimap-active-label" id="minimapActiveLabel">Vista general · Plano 3D</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <nav class="bottom-dock" id="bottomDock" aria-label="Navegación directa de ambientes y ubicación en torres">
+    <div class="dock-scroll" id="dockScroll">
+      <button type="button" class="dock-btn dock-towers-btn" data-target="towers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 21h18"></path>
+          <path d="M5 21V7l6-3v17"></path>
+          <path d="M19 21V11l-6-3"></path>
+          <path d="M9 9v.01M9 13v.01M9 17v.01M15 13v.01M15 17v.01"></path>
+        </svg>
+        <span>Ubicación Torres</span>
+      </button>
+      <button type="button" class="dock-btn is-active" data-target="plan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+        <span>Plano 3D</span>
+      </button>
+      <span class="dock-group-sep" aria-hidden="true"></span>
+      <button type="button" class="dock-btn" data-target="sala">
+        <span>Sala - Comedor</span>
+      </button>
+      <button type="button" class="dock-btn" data-target="cocina">
+        <span>Cocina</span>
+      </button>
+      <button type="button" class="dock-btn" data-target="estudio">
+        <span>Estudio</span>
+      </button>
+      <button type="button" class="dock-btn" data-target="dormitorio">
+        <span>Dormitorio Principal</span>
+      </button>
+      <button type="button" class="dock-btn" data-target="bano">
+        <span>Baño Principal</span>
+      </button>
+      <span class="dock-group-sep" aria-hidden="true"></span>
+      <button type="button" class="dock-btn" data-target="estar">
+        <span>Sala de Estar</span>
+      </button>
+      <button type="button" class="dock-btn" data-target="terraza">
+        <span>Terraza</span>
+      </button>
+      <button type="button" class="dock-btn" data-target="bano2">
+        <span>Baño Terraza</span>
+      </button>
+      <button type="button" class="dock-btn" data-target="lavanderia">
+        <span>Lavandería</span>
+      </button>
+    </div>
+    <div class="dock-divider" aria-hidden="true"></div>
+    <button type="button" class="dock-btn dock-fullscreen" id="btnFullscreen" title="Pantalla Completa" aria-label="Activar o salir de pantalla completa">
+      <svg class="icon-fs-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+      </svg>
+      <svg class="icon-fs-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"></path>
+      </svg>
+      <span class="fs-label">Pantalla Completa</span>
+    </button>
+  </nav>
+  <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+  <aside class="specs-drawer" id="specsDrawer" aria-label="Ficha técnica del departamento" aria-hidden="true">
+    <div class="drawer-header">
+      <div>
+        <span class="drawer-eyebrow">DECAL INMOBILIARIA · 17 AÑOS · +26 PROYECTOS</span>
+        <h2 class="drawer-title" id="drawerTitle">Proyecto MIAMI — Dpto. C-501</h2>
+        <p class="drawer-location">Ca. Batallón Concepción 211, Surco (límite con Chacarilla)</p>
+      </div>
+      <button type="button" class="drawer-close" id="btnCloseSpecs" aria-label="Cerrar ficha técnica">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-content">
+      <div class="area-hero-card">
+        <div class="area-hero-main">
+          <span class="area-label" id="drawerAreaLabel">ÁREA TOTAL OFICIAL · TORRE C (PISO 5 + AZOTEA)</span>
+          <div class="area-value" id="drawerAreaVal">138.59 <span>m²</span></div>
+          <div class="area-imperial" id="drawerAreaSub">97.44 m² techada + 41.15 m² terraza · 1,491.77 ft² · Dúplex</div>
+        </div>
+        <div class="area-badges">
+          <span class="spec-pill">Entrega Marzo 2028</span>
+          <span class="spec-pill">Financiado BBVA</span>
+          <span class="spec-pill">Certificación EDGE</span>
+          <span class="spec-pill">CODIP</span>
+        </div>
+        <button type="button" class="drawer-towers-jump" id="btnDrawerGoTowers">
+          Ver ubicación exacta en las 4 Torres (3D) →
+        </button>
+      </div>
+      <div class="kpi-grid" id="drawerKpiGrid">
+        <div class="kpi-item">
+          <span class="kpi-num">4 Torres</span>
+          <span class="kpi-label">de 5 pisos</span>
+        </div>
+        <div class="kpi-item">
+          <span class="kpi-num">2 + Est.</span>
+          <span class="kpi-label">Dorm. / Estudio</span>
+        </div>
+        <div class="kpi-item">
+          <span class="kpi-num">3</span>
+          <span class="kpi-label">Baños completos</span>
+        </div>
+        <div class="kpi-item">
+          <span class="kpi-num">+400 m²</span>
+          <span class="kpi-label">Parque Privado</span>
+        </div>
+      </div>
+      <section class="drawer-section" id="drawerDistribution">
+        <h3 class="section-title">Distribución Arquitectónica</h3>
+        <div class="level-group">
+          <div class="level-group-title">Primer Nivel · Zona Social y Privada</div>
+          <ul class="room-list">
+            <li class="room-list-item is-clickable" data-jump-room="sala">
+              <div>
+                <strong>Sala - Comedor</strong>
+                <small>2.95 × 4.90 m · Piso SPC (zócalo 7 cm) y ventanal piso-techo</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item is-clickable" data-jump-room="cocina">
+              <div>
+                <strong>Cocina Integrada · Línea Negra FDV</strong>
+                <small>2.15 × 3.20 m · Encimera Black 60, Horno Neo 2.0, Campana Class 60 (negro) + Lavaplatos FDV Square 1C Inox 304 + Alacena</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item is-clickable" data-jump-room="dormitorio">
+              <div>
+                <strong>Dormitorio Principal</strong>
+                <small>2.90 × 3.65 m · Piso SPC, clósets en melamina blanca y baño incorporado</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item is-clickable" data-jump-room="bano">
+              <div>
+                <strong>Baño Principal Incorporado</strong>
+                <small>3.65 × 2.60 m · Cerámico gris 60×60, tablero cuarzo blanco y ducha</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item is-clickable" data-jump-room="estudio">
+              <div>
+                <strong>Estudio / Dormitorio 2</strong>
+                <small>1.85 × 3.15 m · Piso SPC (zócalo 7 cm) · Ideal home office o 2.° dormitorio</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item">
+              <div>
+                <strong>Baño Secundario &amp; Alacena / Lavandería N1</strong>
+                <small>Baño 1.15 × 2.60 m (cerámico gris) · Alacena 1.20 × 2.30 m (marfil)</small>
+              </div>
+              <span class="static-chip">Nivel 1</span>
+            </li>
+          </ul>
+        </div>
+        <div class="level-group">
+          <div class="level-group-title">Segundo Nivel · Azotea &amp; Terraza Privada</div>
+          <ul class="room-list">
+            <li class="room-list-item is-clickable" data-jump-room="estar">
+              <div>
+                <strong>Sala de Estar Familiar</strong>
+                <small>3.30 × 3.95 m · Piso cerámico 60×60 gris, zócalo 10 cm y mampara</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item is-clickable" data-jump-room="terraza">
+              <div>
+                <strong>Terraza Abierta + Área Verde</strong>
+                <small>2.30 × 4.25 m · Cerámico 60×60, barandas acero inox y cristal 10 mm</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item is-clickable" data-jump-room="bano2">
+              <div>
+                <strong>Baño de Terraza / Visita</strong>
+                <small>1.40 × 2.85 m · Cerámico gris 60×60, paredes blancas y tablero cuarzo</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+            <li class="room-list-item is-clickable" data-jump-room="lavanderia">
+              <div>
+                <strong>Lavandería &amp; Jardín Privado</strong>
+                <small>2.90 × 2.60 m · Cerámico marfil 60×60, lavarropa Trébol y patio verde</small>
+              </div>
+              <span class="jump-chip">Ver foto →</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="drawer-section">
+        <h3 class="section-title">Acabados Oficiales y Equipamiento FDV</h3>
+        <ul class="finishes-list">
+          <li>
+            <span class="finish-dot"></span>
+            <div><strong>Sala, Comedor, Pasillos y Dormitorios:</strong> Piso <strong>SPC</strong> con zócalos h = 7 cm y paredes empastadas y pintadas color blanco.</div>
+          </li>
+          <li>
+            <span class="finish-dot"></span>
+            <div><strong>Cocina y Lavandería:</strong> Piso <strong>cerámico 60×60 color marfil</strong> (San Lorenzo, Celima o similar) con zócalos h = 0.10 m, enchape blanco tipo ladrillo 10.7×27 cm, tablero de <strong>cuarzo blanco</strong>, muebles altos melamina blanca, bajos tipo madera y grifería monocomando (Vainsa, Trébol o similar).</div>
+          </li>
+          <li>
+            <span class="finish-dot"></span>
+            <div><strong>Equipamiento de Cocina FDV (Línea Negra):</strong> Encimera a gas <strong>FDV Black 60</strong> (SAP 51211-51182 · cristal templado negro, 4 quemadores c/ triple llama y parrillas de hierro fundido), horno empotrable a gas <strong>FDV Neo 2.0 GN</strong> (SAP 50533 · 56 L, 6 programas, grill/convector/spiedo, línea negra) y campana bajo mueble <strong>FDV Class 60</strong> (SAP 13446 · 360 m³/h, 3 velocidades, luz LED, línea negra).</div>
+          </li>
+          <li>
+            <span class="finish-dot"></span>
+            <div><strong>Lavaplatos FDV Square 1C (Acero Inox 304):</strong> 1 cuba cuadrada de encastre bajo cubierta en acero inoxidable 304 (espesor 0.9 mm, aislante acústico, válvula, sifón y rebalse — Small 54×44 cm / X-Small 44×44 cm).</div>
+          </li>
+          <li>
+            <span class="finish-dot"></span>
+            <div><strong>Baños (Principal, Secundario y Terraza/Visita):</strong> Piso <strong>cerámico 60×60 color gris</strong> (San Lorenzo, Celima o similar) con zócalos h = 0.10 m, paredes blancas empastadas + enchape cerámico blanco 30×60 cm, tablero de <strong>cuarzo blanco</strong>, inodoro One Piece y grifería monocomando (Vainsa o Trébol).</div>
+          </li>
+          <li>
+            <span class="finish-dot"></span>
+            <div><strong>Terrazas y Azotea:</strong> Piso <strong>cerámico formato 60×60</strong> (San Lorenzo, Celima o similar) con zócalos h = 0.10 m, barandas de acero inoxidable y cristal templado de 10 mm.</div>
+          </li>
+          <li>
+            <span class="finish-dot"></span>
+            <div><strong>Carpintería, Seguridad y Aliados:</strong> Puerta principal enchapada en madera Cedro, puertas interiores gloss blanco, clósets en melamina blanca con tiradores de aluminio y cristal templado Sistema Nova. Paquetes disponibles con <strong>Chapa Smart</strong> (Huella/RFID/Clave) y <strong>Dicroicos LED cálidos</strong>. Aliados: <strong>Vainsa · Kitchen Center · Smart House</strong>.</div>
+          </li>
+        </ul>
+      </section>
+      <section class="drawer-section">
+        <h3 class="section-title">Atractivas Áreas Comunes del Edificio</h3>
+        <div class="amenities-chips">
+          <span>Parque Central Privado (+400 m²)</span>
+          <span>Piscina Techada</span>
+          <span>Zona de Parrilla</span>
+          <span>SUM (Sala de Usos Múltiples)</span>
+          <span>Gimnasio</span>
+          <span>Co-Working</span>
+          <span>Pet Spa</span>
+          <span>Lobby Peatonal</span>
+          <span>Ascensores TK</span>
+        </div>
+        <p class="disclaimer-note">
+          * Especificaciones basadas en la Memoria de Acabados oficial y Brochure de Proyecto MIAMI (DECAL Properties S.A.C.), sujetas a disponibilidad de stock y desarrollo definitivo del proyecto. Mobiliario y decoración referenciales.
+        </p>
+      </section>
+    </div>
+    <div class="drawer-footer">
+      <button type="button" class="drawer-cta-primary" id="btnOpenQuoteDrawer">
+        Solicitar Cotización o Agendar Visita
+      </button>
+      <div class="advisor-row">
+        <span>Asesor Comercial Senior: <strong>José Luis Leguía</strong></span>
+        <a id="drawerWaLink" href="https://wa.me/51922342926?text=Hola%20Jos%C3%A9%20Luis%2C%20acabo%20de%20recorrer%20el%20tour%20virtual%20del%20Dpto.%20C-501%20(138.59%20m%C2%B2)%20en%20Proyecto%20MIAMI%20y%20deseo%20recibir%20informaci%C3%B3n%20y%20cotizaci%C3%B3n." target="_blank" rel="noopener noreferrer" class="advisor-wa-link">
+          WhatsApp +51 922 342 926
+        </a>
+      </div>
+    </div>
+  </aside>
+  <div class="modal-overlay" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="drawer-eyebrow" id="quoteModalEyebrow">PROYECTO MIAMI · TORRE C · DPTO. C-501</span>
+          <h2 id="quoteModalTitle">Atención Comercial Personalizada</h2>
+        </div>
+        <button type="button" class="drawer-close" id="btnCloseModal" aria-label="Cerrar ventana">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-tabs" role="tablist">
+        <button type="button" class="modal-tab is-active" role="tab" aria-selected="true" data-tab="cotizacion">Solicitar Cotización</button>
+        <button type="button" class="modal-tab" role="tab" aria-selected="false" data-tab="visita">Agendar Visita</button>
+      </div>
+      <form class="quote-form" id="quoteForm">
+        <div class="form-row">
+          <label for="clientName">Nombre y apellido</label>
+          <input type="text" id="clientName" name="clientName" placeholder="Ej. Camila Mendoza" required />
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="clientPhone">WhatsApp / Celular</label>
+            <input type="tel" id="clientPhone" name="clientPhone" placeholder="+51 999 000 000" required />
+          </div>
+          <div class="form-row">
+            <label for="clientEmail">Correo electrónico (opcional)</label>
+            <input type="email" id="clientEmail" name="clientEmail" placeholder="nombre@correo.com" />
+          </div>
+        </div>
+        <div class="visit-fields" id="visitFields" hidden>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="visitDay">Día preferido</label>
+              <select id="visitDay" name="visitDay">
+                <option value="Lunes (4:00 p.m. - 6:00 p.m.)">Lunes (4:00 p.m. – 6:00 p.m.)</option>
+                <option value="Martes (11:00 a.m. - 6:00 p.m.)" selected>Martes (11:00 a.m. – 6:00 p.m.)</option>
+                <option value="Miércoles (11:00 a.m. - 6:00 p.m.)">Miércoles (11:00 a.m. – 6:00 p.m.)</option>
+                <option value="Viernes (4:00 p.m. - 6:00 p.m.)">Viernes (4:00 p.m. – 6:00 p.m.)</option>
+                <option value="Sábado (11:00 a.m. - 6:00 p.m.)">Sábado (11:00 a.m. – 6:00 p.m.)</option>
+                <option value="Domingo (11:00 a.m. - 6:00 p.m.)">Domingo (11:00 a.m. – 6:00 p.m.)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="visitTime">Horario sugerido</label>
+              <input type="text" id="visitTime" name="visitTime" placeholder="Ej. 4:30 p.m." />
+            </div>
+          </div>
+          <p class="schedule-note">
+            Atención en sala de ventas: Mar, Mié, Sáb y Dom de 11:00 a.m. a 6:00 p.m. · Lun y Vie de 4:00 p.m. a 6:00 p.m. (Jueves cerrado).
+          </p>
+        </div>
+        <div class="form-row">
+          <label for="clientNotes">Consulta o interés adicional (cochera, depósito, financiamiento BBVA)</label>
+          <textarea id="clientNotes" name="clientNotes" rows="2" placeholder="Ej. Me interesa recibir la proforma con cochera simple y opciones de inicial fraccionada."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="modal-submit-wa">
+            Enviar por WhatsApp al Asesor
+          </button>
+          <button type="button" class="modal-copy-btn" id="btnCopySummary">
+            Copiar resumen
+          </button>
+        </div>
+        <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+  <div class="compare-overlay" id="compareOverlay" role="dialog" aria-modal="true" aria-labelledby="compareTitle" aria-hidden="true">
+    <div class="compare-shell">
+      <div class="compare-header">
+        <div>
+          <span class="drawer-eyebrow">PROYECTO MIAMI · COMPARACIÓN EN VIVO</span>
+          <h2 id="compareTitle">Comparador de Departamentos (Pantalla Dividida)</h2>
+        </div>
+        <div class="compare-view-modes" role="tablist" aria-label="Tipo de plano a comparar">
+          <button type="button" class="cmp-mode-btn is-active" data-cmp-mode="plan3d">Plano 3D</button>
+          <button type="button" class="cmp-mode-btn" data-cmp-mode="commercial">2D Comercial</button>
+          <button type="button" class="cmp-mode-btn" data-cmp-mode="technical">2D Acotado</button>
+        </div>
+        <button type="button" class="drawer-close" id="btnCloseCompare" aria-label="Cerrar comparador">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="compare-grid">
+        <section class="compare-col" aria-label="Opción A">
+          <div class="compare-col-head">
+            <span class="compare-slot-badge">OPCIÓN A</span>
+            <select class="compare-select" id="cmpSelectA" aria-label="Seleccionar departamento A"></select>
+            <button type="button" class="compare-open-btn" id="cmpOpenA">Abrir 3D →</button>
+          </div>
+          <div class="compare-media">
+            <img id="cmpImgA" src="" alt="Plano departamento opción A" />
+          </div>
+          <div class="compare-specs" id="cmpSpecsA"></div>
+        </section>
+        <section class="compare-col" aria-label="Opción B">
+          <div class="compare-col-head">
+            <span class="compare-slot-badge is-b">OPCIÓN B</span>
+            <select class="compare-select" id="cmpSelectB" aria-label="Seleccionar departamento B"></select>
+            <button type="button" class="compare-open-btn" id="cmpOpenB">Abrir 3D →</button>
+          </div>
+          <div class="compare-media">
+            <img id="cmpImgB" src="" alt="Plano departamento opción B" />
+          </div>
+          <div class="compare-specs" id="cmpSpecsB"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
